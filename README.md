@@ -6,7 +6,7 @@ A fully responsive **Job Board Website** built using **HTML**, **CSS**, and **Ja
 
 ## 🔗 Live Demo
 
-👉 [Live Site](#) *(Add your deployed URL here — GitHub Pages, Netlify, Vercel, etc.)*
+👉  https://madasisathwik.github.io/CODSOFT_TASK-2-JOB-BOARD/
 
 ---
 
