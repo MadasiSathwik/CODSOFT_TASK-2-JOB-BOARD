@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Listings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>JobBoard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Jobs</a>
+      <a href="employer.html">Post a Job</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <section class="job-listings">
+    <h2>Available Jobs</h2>
+    <div id="jobs" class="job-cards"></div>
+  </section>
+
+  <script>
+    const jobs = JSON.parse(localStorage.getItem('postedJobs')) || [];
+    const container = document.getElementById('jobs');
+
+    jobs.forEach((job, i) => {
+      const div = document.createElement('div');
+      div.classList.add('job-card');
+      div.innerHTML = `
+        <h4>${job.title}</h4>
+        <p><strong>${job.company}</strong></p>
+        <p>${job.location}</p>
+        <button onclick="applyToJob('${i}', '${job.title}', '${job.company}')">Apply</button>
+      `;
+      container.appendChild(div);
+    });
+
+    function applyToJob(id, title, company) {
+      const user = localStorage.getItem('loggedInUser');
+      if (!user) {
+        alert("Please log in to apply.");
+        return;
+      }
+      const applied = JSON.parse(localStorage.getItem('appliedJobs')) || [];
+      applied.push({ jobId: id, jobTitle: title, company, user });
+      localStorage.setItem('appliedJobs', JSON.stringify(applied));
+      alert('Applied successfully!');
+    }
+  </script>
+</body>
+</html>

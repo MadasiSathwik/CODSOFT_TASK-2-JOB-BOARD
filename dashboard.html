@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>JobBoard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Jobs</a>
+      <a href="employer.html">Post a Job</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2>Dashboard</h2>
+    <div id="user-info"></div>
+    <h3>Your Applications</h3>
+    <ul id="applications"></ul>
+  </section>
+
+  <script>
+    const user = localStorage.getItem('loggedInUser');
+    const apps = JSON.parse(localStorage.getItem('appliedJobs')) || [];
+    const filtered = apps.filter(app => app.user === user);
+
+    document.getElementById('user-info').innerText = `Logged in as: ${user}`;
+    const list = document.getElementById('applications');
+    filtered.forEach(app => {
+      const li = document.createElement('li');
+      li.textContent = `${app.jobTitle} at ${app.company}`;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>

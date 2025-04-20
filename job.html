@@ -1,0 +1,50 @@
+<!-- job.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobBoard | Job Detail</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>JobBoard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Jobs</a>
+      <a href="employer.html">Post a Job</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="job-detail">
+    <h2>Frontend Developer</h2>
+    <p><strong>Company:</strong> TechNova</p>
+    <p><strong>Location:</strong> Remote</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae arcu ullamcorper tempor.</p>
+    <a class="btn" href="#">Apply Now</a>
+  </section>
+  
+  <script>
+    function applyToJob(jobId, jobTitle, company) {
+      const appliedJobs = JSON.parse(localStorage.getItem('appliedJobs')) || [];
+      const user = localStorage.getItem('loggedInUser');
+  
+      if (!user) {
+        alert("Please log in to apply.");
+        return;
+      }
+  
+      appliedJobs.push({ jobId, jobTitle, company, user });
+      localStorage.setItem('appliedJobs', JSON.stringify(appliedJobs));
+      alert('Application submitted!');
+    }
+  </script>  
+
+  <footer>
+    <p>&copy; 2025 JobBoard. All rights reserved.</p>
+  </footer>
+</body>
+</html>

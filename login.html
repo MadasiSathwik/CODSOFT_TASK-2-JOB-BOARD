@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>JobBoard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Jobs</a>
+      <a href="employer.html">Post a Job</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2>Login</h2>
+    <form onsubmit="loginUser(event)">
+      <input type="text" id="username" placeholder="Enter Username" required /><br></br>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <script>
+    function loginUser(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      localStorage.setItem('loggedInUser', username);
+      alert('Logged in successfully as ' + username);
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

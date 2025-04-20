@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Job</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>JobBoard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Jobs</a>
+      <a href="employer.html">Post a Job</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2>Post a Job</h2>
+    <form onsubmit="postJob(event)">
+      <input type="text" id="title" placeholder="Job Title" required>
+      <input type="text" id="company" placeholder="Company Name" required>
+      <input type="text" id="location" placeholder="Location" required>
+      <button type="submit">Post Job</button>
+    </form>
+  </section>
+
+  <script>
+    function postJob(e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const company = document.getElementById('company').value;
+      const location = document.getElementById('location').value;
+      const jobs = JSON.parse(localStorage.getItem('postedJobs')) || [];
+      jobs.push({ title, company, location });
+      localStorage.setItem('postedJobs', JSON.stringify(jobs));
+      alert('Job posted successfully!');
+      window.location.href = 'listings.html';
+    }
+  </script>
+</body>
+</html>

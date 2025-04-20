@@ -1,0 +1,153 @@
+body { 
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f3f4f6;
+    color: #1f2937;
+  }
+  
+  header {
+    background-color: #0f172a;
+    color: white;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 1em;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 0.25em 0;
+    transition: color 0.3s;
+  }
+  
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: #60a5fa;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  nav a:hover {
+    color: #60a5fa;
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  .hero {
+    background: linear-gradient(to right, #4f46e5, #3b82f6);
+    color: white;
+    text-align: center;
+    padding: 4em 2em;
+  }
+  
+  .hero .btn {
+    background: white;
+    color: #3b82f6;
+    padding: 0.75em 1.5em;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .hero .btn:hover {
+    background: #3b82f6;
+    color: white;
+  }
+  
+  .featured {
+    padding: 2em;
+    background: #eef2ff;
+    border-top: 4px solid #6366f1;
+  }
+  
+  .featured h3 {
+    color: #4338ca;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  
+  h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    color: #3b82f6;
+  }
+  
+  .job-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    margin-top: 1em;
+  }
+  
+  .job-card {
+    background: #e0e7ff;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    position: relative;
+  }
+  
+  .job-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .job-card .remote-tag {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+    font-size: 0.85em;
+    margin-top: 0.5em;
+    transition: background-color 0.3s;
+  }
+  
+  .job-card .remote-tag:hover {
+    background-color: #1d4ed8;
+  }
+  
+  input, textarea, select, button {
+    padding: 0.75em;
+    margin: 0.5em 0;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: 2em;
+  }
+  

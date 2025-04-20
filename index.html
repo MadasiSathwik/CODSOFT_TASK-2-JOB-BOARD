@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobBoard | Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>JobBoard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Jobs</a>
+      <a href="employer.html">Post a Job</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Find Your Dream Job</h2>
+    <p>Explore top job openings across various industries</p>
+    <a class="btn" href="listings.html">Browse Jobs</a>
+  </section>
+
+  <section class="featured">
+    <h3>Featured Jobs</h3>
+    <div id="featured-jobs" class="job-cards"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 JobBoard. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const featuredJobs = [
+      { id: 1, title: "Frontend Developer", company: "TechNova", location: "Remote" },
+      { id: 2, title: "Backend Engineer", company: "CodeWorks", location: "New York" },
+      { id: 3, title: "UI/UX Designer", company: "DesignPro", location: "San Francisco" }
+    ];
+
+    const featuredContainer = document.getElementById('featured-jobs');
+
+    featuredJobs.forEach(job => {
+      const jobDiv = document.createElement('div');
+      jobDiv.classList.add('job-card');
+      jobDiv.innerHTML = `
+        <h4>${job.title}</h4>
+        <p><strong>${job.company}</strong></p>
+        <p>${job.location}</p>
+        <button onclick="applyToJob('${job.id}', '${job.title}', '${job.company}')">Apply Now</button>
+      `;
+      featuredContainer.appendChild(jobDiv);
+    });
+
+    function applyToJob(jobId, jobTitle, company) {
+      const user = localStorage.getItem('loggedInUser');
+      if (!user) {
+        alert("Please log in to apply.");
+        return;
+      }
+      const appliedJobs = JSON.parse(localStorage.getItem('appliedJobs')) || [];
+      appliedJobs.push({ jobId, jobTitle, company, user });
+      localStorage.setItem('appliedJobs', JSON.stringify(appliedJobs));
+      alert('Application submitted!');
+    }
+  </script>
+</body>
+</html>
